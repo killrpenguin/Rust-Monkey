@@ -1,0 +1,43 @@
+#[allow(dead_code, unused)]
+pub mod monkey_ast {
+    use crate::token::tokens::*;
+    
+    #[derive(PartialEq, Clone, Debug)]
+    pub struct AstIdent (pub String);
+
+    #[derive(PartialEq, Clone, Debug)]
+    pub enum Expressions {
+        Expr(Box<Vec<Token>>),
+    }
+
+    #[derive(PartialEq, Clone, Debug)]
+    pub enum Statement {
+        Let(AstIdent, Expressions),
+        Ret(Expressions),
+        Expr(Expressions),
+        
+    }
+
+    #[derive(PartialEq, Clone, Debug)]
+    pub struct ProgramNode {
+        statements: Box<Vec<String>>,
+    }
+
+    impl ProgramNode {
+        pub fn new(input: &str) -> ProgramNode {
+            let statements_list: Vec<String> = input.split_terminator(';').map(str::to_string).collect();
+            ProgramNode {
+                statements: Box::new(statements_list)
+            }
+        }
+
+        pub fn token_literal(&mut self) -> String {
+            if self.statements.len() > 0 {
+                self.statements[0].clone()
+            } else {
+                String::from("")
+            }
+        }
+    }
+    
+}
