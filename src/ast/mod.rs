@@ -10,7 +10,11 @@ pub mod monkey_ast {
     pub struct Program {
         statement_nodes: Vec<Stmt>,
     }
-
+    impl Default for Program {
+        fn default() -> Self {
+            Self::new()
+        }
+    }
     impl Program {
         pub fn new() -> Program {
             Program {
@@ -21,14 +25,14 @@ pub mod monkey_ast {
 
     #[derive(Debug, Clone, PartialEq)]
     pub enum Stmt {
-        Let(Expr, Box<Expr>),
-        Return(Box<Expr>),
-        ExprStmt(Box<Expr>),
+        Let(Expression, Expression),
+        Return(Expression),
+        ExprStmt(Expression, Option<Expression>),
     }
 
     #[derive(Debug, Clone, PartialEq)]
-    pub enum Expr {
-        Expr(Operator, Box<Expr>),
+    pub enum Expression {
+        Infix(Operator, Box<Expression>),
         ExprIdent(Ident),
         Literal(Type),
     }
@@ -56,16 +60,16 @@ pub mod monkey_ast {
     impl fmt::Display for Operator {
         fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
             match *self {
-                Operator::Plus => write!(f, "{}", "+"),
-                Operator::Minus => write!(f, "{}", "-"),
-                Operator::Multiply => write!(f, "{}", "*"),
-                Operator::Divide => write!(f, "{}", "/"),
-                Operator::Eq => write!(f, "{}", "="),
-                Operator::NotEq => write!(f, "{}", "!="),
-                Operator::Lt => write!(f, "{}", "<"),
-                Operator::Gt => write!(f, "{}", ">"),
-                Operator::LtEq => write!(f, "{}", "<="),
-                Operator::GtEq => write!(f, "{}", ">="),
+                Operator::Plus => write!(f, "+"),
+                Operator::Minus => write!(f, "-"),
+                Operator::Multiply => write!(f, "*"),
+                Operator::Divide => write!(f, "/"),
+                Operator::Eq => write!(f, "="),
+                Operator::NotEq => write!(f, "!="),
+                Operator::Lt => write!(f, "<"),
+                Operator::Gt => write!(f, ">"),
+                Operator::LtEq => write!(f, "<="),
+                Operator::GtEq => write!(f, ">="),
             }
         }
     }
