@@ -1,0 +1,73 @@
+thread 'rustc' panicked at /rustc/129f3b9964af4d4a709d1383930ade12dfe7c081/compiler/rustc_errors/src/diagnostic.rs:992:9:
+Span must not be empty and have no suggestion
+stack backtrace:
+   0:     0x7fc8c10f3a95 - <unknown>
+   1:     0x7fc8c10f39e5 - std::backtrace::Backtrace::force_capture::h058e0a87bde25634
+   2:     0x7fc8c2f4f223 - <unknown>
+   3:     0x7fc8c110f4cd - std::panicking::rust_panic_with_hook::h830fe61759ecc8f9
+   4:     0x7fc8c110f24b - <unknown>
+   5:     0x7fc8c110c9a9 - <unknown>
+   6:     0x7fc8c110f007 - rust_begin_unwind
+   7:     0x7fc8c10c8763 - core::panicking::panic_fmt::h2402bc76e768da46
+   8:     0x7fc8c327f0c3 - <unknown>
+   9:     0x7fc8c3398af6 - <rustc_hir_analysis[e4827369921e9394]::structured_errors::wrong_number_of_generic_args::WrongNumberOfGenericArgs as rustc_hir_analysis[e4827369921e9394]::structured_errors::StructuredDiag>::diagnostic_common
+  10:     0x7fc8c34681d0 - <unknown>
+  11:     0x7fc8c340fcc2 - <unknown>
+  12:     0x7fc8c340537e - <unknown>
+  13:     0x7fc8c3424647 - <dyn rustc_hir_analysis[e4827369921e9394]::hir_ty_lowering::HirTyLowerer>::lower_path
+  14:     0x7fc8c342756e - <unknown>
+  15:     0x7fc8c339152f - rustc_hir_analysis[e4827369921e9394]::collect::type_of::type_of
+  16:     0x7fc8c4b91f25 - <unknown>
+  17:     0x7fc8c4ce56f7 - <unknown>
+  18:     0x7fc8c4aa0d33 - <unknown>
+  19:     0x7fc8c4d2034a - <unknown>
+  20:     0x7fc8c40be555 - <unknown>
+  21:     0x7fc8c40b8db9 - rustc_middle[8ff33314c052e2d1]::ty::trait_def::trait_impls_of_provider
+  22:     0x7fc8c4b778d6 - <unknown>
+  23:     0x7fc8c4cd7c97 - <unknown>
+  24:     0x7fc8c4aa0d33 - <unknown>
+  25:     0x7fc8c4a8b073 - <unknown>
+  26:     0x7fc8c4b364ab - <unknown>
+  27:     0x7fc8c4d7ebab - <unknown>
+  28:     0x7fc8c4d7d7c3 - <unknown>
+  29:     0x7fc8c4a8e5ed - <unknown>
+  30:     0x7fc8c4d2b60f - <unknown>
+  31:     0x7fc8c3270e71 - <unknown>
+  32:     0x7fc8c4b75dc8 - <unknown>
+  33:     0x7fc8c4de43c7 - <unknown>
+  34:     0x7fc8c4a991ac - <unknown>
+  35:     0x7fc8c4a8a17a - <unknown>
+  36:     0x7fc8c4b34a8b - <unknown>
+  37:     0x7fc8c4d7ebab - <unknown>
+  38:     0x7fc8c4d7e743 - <unknown>
+  39:     0x7fc8c4d7d7c3 - <unknown>
+  40:     0x7fc8c4a8fead - <unknown>
+  41:     0x7fc8c4e4f5ff - <unknown>
+  42:     0x7fc8c346b795 - <unknown>
+  43:     0x7fc8c3277cce - rustc_hir_analysis[e4827369921e9394]::check_crate
+  44:     0x7fc8c3b621ff - <unknown>
+  45:     0x7fc8c4b920e1 - <unknown>
+  46:     0x7fc8c4d1e1ef - <unknown>
+  47:     0x7fc8c4aa849c - <unknown>
+  48:     0x7fc8c4ce8482 - <unknown>
+  49:     0x7fc8c2f38a5b - <unknown>
+  50:     0x7fc8c2f896a5 - <unknown>
+  51:     0x7fc8c2f5d781 - <unknown>
+  52:     0x7fc8c2f88308 - <unknown>
+  53:     0x7fc8c2f66362 - <unknown>
+  54:     0x7fc8c2f66d6b - <unknown>
+  55:     0x7fc8c111aaa4 - <unknown>
+  56:     0x7fc8c0f20821 - <unknown>
+  57:     0x7fc8c0fa29ac - <unknown>
+  58:                0x0 - <unknown>
+
+
+rustc version: 1.79.0-nightly (129f3b996 2024-06-10) (gentoo)
+platform: x86_64-unknown-linux-gnu
+
+query stack during panic:
+#0 [type_of] computing type of `parser::monkey_parser::<impl at src/parser/mod.rs:12:14: 12:19>`
+#1 [trait_impls_of] finding trait impls of `core::fmt::Debug`
+#2 [coherent_trait] coherence checking all impls of trait `core::fmt::Debug`
+#3 [analysis] running analysis passes on this crate
+end of query stack
